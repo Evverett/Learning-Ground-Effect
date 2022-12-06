@@ -9,6 +9,7 @@ import os as os
 import numpy as np
 import matplotlib.pyplot as plt
 
+#function loads, cleans, and assigns labels to all collected data
 def GetAllData(plot=False):
     basepath = r"C:\Users\Everett Werner\Desktop\Current School\ML\Data"
     folders = [name for name in os.listdir(basepath)]
@@ -71,7 +72,7 @@ def GetAllData(plot=False):
     outputs2 = []
     for cf,f in enumerate(foldernames):
         cslot = cf+1
-        for cdat in f.keys():
+        for cdat in f.keys(): #Spaghetti code but I only had 6 shapes so oh well
             if 'none' in cdat:
                 attach = 0
             elif 'arm' in cdat:
@@ -86,11 +87,11 @@ def GetAllData(plot=False):
                 attach = 5
             else:
                 print('Unknown string: %' % cdat)
-            if cslot != 6:
+            if cslot != 6: #data for exclusion stored in folder 6
                 for thrusts in f[cdat]:
-                    inputs.append([float(attach),float(cslot),float(thrusts[1])])
+                    inputs.append([float(attach),float(cslot),float(thrusts[1])]) #can remove data from labels here
                     outputs.append([thrusts[0]])
-            if cslot == 6:
+            if cslot == 6: #allows for data to be excluded from training set
                 for thrusts in f[cdat]:
                     inputs2.append([float(3),float(7),float(thrusts[0])])
                     outputs2.append([thrusts[1]])

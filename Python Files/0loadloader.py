@@ -4,8 +4,8 @@ Created on Mon Nov 14 08:15:38 2022
 
 @author: Everett Werner
 """
+#Import and loads data for offset visualization
 import os as os
-
 import numpy as np
 import matplotlib.pyplot as plt
 
